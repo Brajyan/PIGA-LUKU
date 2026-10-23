@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHOE HUSTLE KE - Online Shoe Marketing</title>
+<title>SHOE HUSTLE KE</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
@@ -11,16 +11,13 @@ body{background:#0f172a;color:#fff;min-height:100vh}
 header{background:#0b1220;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;border-bottom:1px solid #1e293b}
 .logo{font-weight:800;font-size:22px} .logo span{color:#f59e0b}
 .btn{background:#f59e0b;color:#000;padding:12px 18px;border:none;border-radius:10px;font-weight:700;cursor:pointer;width:100%;font-size:16px}
-.btn:disabled{opacity:0.5}
 .tabs{display:flex;background:#1e293b;border-radius:12px;padding:4px;margin-bottom:18px}
-.tab{flex:1;padding:12px;text-align:center;border-radius:9px;cursor:pointer;font-weight:600;transition:0.2s}
+.tab{flex:1;padding:12px;text-align:center;border-radius:9px;cursor:pointer;font-weight:600}
 .tab.active{background:#f59e0b;color:#000}
 .card{background:#1e293b;border-radius:16px;padding:18px;margin-bottom:14px;border:1px solid #334155}
-input,select,textarea{width:100%;padding:14px;background:#0f172a;border:1px solid #334155;border-radius:10px;color:#fff;margin-bottom:12px;font-size:15px}
-input:focus{border-color:#f59e0b;outline:none}
+input{width:100%;padding:14px;background:#0f172a;border:1px solid #334155;border-radius:10px;color:#fff;margin-bottom:12px;font-size:15px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(min-width:700px){.grid{grid-template-columns:1fr 1fr 1fr 1fr} .container{max-width:1100px;margin:auto}}
-.container{padding:18px}
+.container{padding:18px;max-width:1100px;margin:auto}
 .shoe-img{width:100%;height:160px;object-fit:cover;border-radius:12px;background:#0f172a}
 .badge{background:#f59e0b;color:#000;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700}
 .topbar{font-size:13px;color:#94a3b8;text-align:center;padding:10px}
@@ -29,193 +26,44 @@ input:focus{border-color:#f59e0b;outline:none}
 </style>
 </head>
 <body>
-<header>
-<div class="logo">SHOE<span>HUSTLE</span> 👟</div>
-<div id="userInfo" style="font-size:13px;color:#94a3b8"></div>
-</header>
+<header><div class="logo">SHOE<span>HUSTLE</span> 👟</div><div id="userInfo" style="font-size:13px;color:#94a3b8;cursor:pointer"></div></header>
 <div class="topbar">Online Shoe Marketing • Booking → WhatsApp 0799163248</div>
 <div class="container">
 <div id="authSection" class="card" style="max-width:420px;margin:20px auto">
-<h2 style="text-align:center;margin-bottom:6px">SHOE HUSTLE KE</h2>
+<h2 style="text-align:center">SHOE HUSTLE KE</h2>
 <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:16px">Login to continue</p>
 <div class="tabs"><div class="tab active" onclick="switchTab('login')">Login</div><div class="tab" onclick="switchTab('signup')">Customer Sign Up</div></div>
-<div id="loginForm">
-<input id="loginEmail" type="email" placeholder="Email">
-<input id="loginPass" type="password" placeholder="Password">
-<button class="btn" onclick="login()">Login</button>
-</div>
-<div id="signupForm" class="hidden">
-<input id="signName" placeholder="Full Name">
-<input id="signPhone" placeholder="Phone e.g 0712345678">
-<input id="signEmail" type="email" placeholder="Email">
-<input id="signPass" type="password" placeholder="Password">
-<button class="btn" onclick="signup()">Create Account</button>
-</div>
+<div id="loginForm"><input id="loginEmail" type="email" placeholder="Email" autocomplete="off"><input id="loginPass" type="password" placeholder="Password" autocomplete="off"><button class="btn" onclick="login()">Login</button></div>
+<div id="signupForm" class="hidden"><input id="signName" placeholder="Full Name"><input id="signPhone" placeholder="Phone"><input id="signEmail" type="email" placeholder="Email"><input id="signPass" type="password" placeholder="Password"><button class="btn" onclick="signup()">Create Account</button></div>
 <p id="authMsg" style="text-align:center;margin-top:12px;color:#f87171;font-size:13px"></p>
 </div>
-<div id="customerView" class="hidden">
-<h3 style="margin-bottom:12px">Available Shoes 🔥</h3>
-<div id="shoesGrid" class="grid"></div>
-</div>
+<div id="customerView" class="hidden"><h3>Available Shoes 🔥</h3><div id="shoesGrid" class="grid"></div></div>
 <div id="adminView" class="hidden">
 <div class="grid" style="grid-template-columns:1fr 1fr">
-<div class="card">
-<h3>➕ Add New Shoe</h3>
-<input id="shoeName" placeholder="Shoe Name e.g Air Jordan">
-<input id="shoePrice" type="number" placeholder="Price KES">
-<input id="shoeSize" placeholder="Sizes e.g 40-45">
-<input id="shoeDesc" placeholder="Description">
-<input id="shoeImage" type="file" accept="image/*">
-<img id="preview" class="hidden shoe-img" style="margin-bottom:10px">
-<button class="btn" onclick="addShoe()">Upload Shoe to Cloud</button>
+<div class="card"><h3>➕ Add New Shoe</h3><input id="shoeName" placeholder="Shoe Name"><input id="shoePrice" type="number" placeholder="Price KES"><input id="shoeSize" placeholder="Sizes e.g 40-45"><input id="shoeDesc" placeholder="Description"><input id="shoeImage" type="file" accept="image/*"><img id="preview" class="hidden shoe-img" style="margin-bottom:10px"><button class="btn" onclick="addShoe()">Upload Shoe</button></div>
+<div class="card"><h3>📦 Bookings</h3><div id="bookingsList">No bookings yet</div><button class="btn" style="margin-top:10px;background:#334155;color:#fff" onclick="logout()">Logout</button></div>
 </div>
-<div class="card">
-<h3>📦 Bookings</h3>
-<div id="bookingsList">Loading bookings...</div>
-<button class="btn" style="margin-top:10px;background:#334155;color:#fff" onclick="logout()">Logout</button>
-</div>
-</div>
-<h3 style="margin:18px 0 12px">All Shoes (Live to Customers)</h3>
-<div id="adminShoesGrid" class="grid"></div>
+<h3 style="margin:18px 0 12px">All Shoes (Live)</h3><div id="adminShoesGrid" class="grid"></div>
 </div>
 </div>
 <div id="toast"></div>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyDemo-Replace-With-Your-Key",
-  authDomain: "shoe-hustle-ke-demo.firebaseapp.com",
-  projectId: "shoe-hustle-ke-demo",
-  storageBucket: "shoe-hustle-ke-demo.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdef"
-};
-let useCloud = false;
-let db = null;
-try{
-  const app = initializeApp(firebaseConfig);
-  db = getFirestore(app);
-  if(firebaseConfig.apiKey.includes("Demo")) throw "demo";
-  useCloud = true;
-}catch(e){useCloud = false;}
-window.db = db; window.useCloud = useCloud;
-window.fb = { collection, addDoc, onSnapshot, query, orderBy, doc, deleteDoc };
-</script>
 <script>
-const ADMIN_EMAIL = "taarifakevaccanthouses001@gmail.com";
-const ADMIN_PASS = "Admin2005";
-const WHATSAPP_NUMBER = "254799163248";
-let currentUser = null; let isAdmin = false; let previewBase64 = ""; let shoesCache = [];
-function switchTab(t){
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  if(t==='login'){document.querySelectorAll('.tab')[0].classList.add('active');document.getElementById('loginForm').classList.remove('hidden');document.getElementById('signupForm').classList.add('hidden')}
-  else{document.querySelectorAll('.tab')[1].classList.add('active');document.getElementById('signupForm').classList.remove('hidden');document.getElementById('loginForm').classList.add('hidden')}
-}
+const ADMIN_EMAIL = "taarifakevaccanthouses001@gmail.com"; const ADMIN_PASS = "Admin2005"; const WHATSAPP_NUMBER = "254799163248";
+let currentUser = null; let isAdmin = false; let previewBase64 = "";
+function switchTab(t){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); if(t==='login'){document.querySelectorAll('.tab')[0].classList.add('active');document.getElementById('loginForm').classList.remove('hidden');document.getElementById('signupForm').classList.add('hidden')}else{document.querySelectorAll('.tab')[1].classList.add('active');document.getElementById('signupForm').classList.remove('hidden');document.getElementById('loginForm').classList.add('hidden')}}
 function toast(m){const t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',3000)}
-document.getElementById('shoeImage')?.addEventListener('change',function(e){
-  const file=e.target.files[0]; if(!file) return;
-  const reader=new FileReader();
-  reader.onload=function(ev){previewBase64=ev.target.result; const img=document.getElementById('preview'); img.src=previewBase64; img.classList.remove('hidden');};
-  reader.readAsDataURL(file);
-});
-function login(){
-  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
-  const pass=document.getElementById('loginPass').value;
-  if(!email||!pass){document.getElementById('authMsg').innerText="Fill all fields";return}
-  if(email===ADMIN_EMAIL && pass===ADMIN_PASS){currentUser={email,name:"Admin",phone:"0799163248"}; isAdmin=true; showApp(); toast("Welcome Admin!"); return;}
-  const users = JSON.parse(localStorage.getItem('sh_users')||'[]');
-  const found = users.find(u=>u.email===email && u.pass===pass);
-  if(found){currentUser=found; isAdmin=false; showApp(); toast("Welcome "+found.name)}
-  else{document.getElementById('authMsg').innerText="Wrong email/password or not registered. Sign up first."}
-}
-function signup(){
-  const name=document.getElementById('signName').value.trim();
-  const phone=document.getElementById('signPhone').value.trim();
-  const email=document.getElementById('signEmail').value.trim().toLowerCase();
-  const pass=document.getElementById('signPass').value;
-  if(!name||!phone||!email||!pass){document.getElementById('authMsg').innerText="Fill all fields";return}
-  let users=JSON.parse(localStorage.getItem('sh_users')||'[]');
-  if(users.find(u=>u.email===email)){document.getElementById('authMsg').innerText="Email already exists, login";return}
-  const newUser={name,phone,email,pass}; users.push(newUser);
-  localStorage.setItem('sh_users',JSON.stringify(users));
-  if(window.useCloud && window.db){window.fb.addDoc(window.fb.collection(window.db,"users"), {name,phone,email,created:Date.now()}).catch(()=>{});}
-  toast("Account created! Now login"); switchTab('login');
-}
-function showApp(){
-  document.getElementById('authSection').classList.add('hidden');
-  document.getElementById('userInfo').innerText=currentUser.name+" • "+(isAdmin?"Admin":"Customer")+" | Logout";
-  document.getElementById('userInfo').onclick=logout;
-  if(isAdmin){document.getElementById('adminView').classList.remove('hidden'); loadShoesAdmin(); loadBookings();}
-  else{document.getElementById('customerView').classList.remove('hidden'); loadShoesCustomer();}
-}
+document.getElementById('shoeImage')?.addEventListener('change',function(e){const file=e.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=function(ev){previewBase64=ev.target.result; const img=document.getElementById('preview'); img.src=previewBase64; img.classList.remove('hidden');}; reader.readAsDataURL(file);});
+function login(){const email=document.getElementById('loginEmail').value.trim().toLowerCase(); const pass=document.getElementById('loginPass').value; if(!email||!pass){document.getElementById('authMsg').innerText="Fill all fields";return} if(email===ADMIN_EMAIL && pass===ADMIN_PASS){currentUser={email,name:"Admin",phone:"0799163248"}; isAdmin=true; showApp(); toast("Welcome Admin!"); return;} const users = JSON.parse(localStorage.getItem('sh_users')||'[]'); const found = users.find(u=>u.email===email && u.pass===pass); if(found){currentUser=found; isAdmin=false; showApp(); toast("Welcome "+found.name)} else{document.getElementById('authMsg').innerText="Wrong email/password or not registered."}}
+function signup(){const name=document.getElementById('signName').value.trim(); const phone=document.getElementById('signPhone').value.trim(); const email=document.getElementById('signEmail').value.trim().toLowerCase(); const pass=document.getElementById('signPass').value; if(!name||!phone||!email||!pass){document.getElementById('authMsg').innerText="Fill all fields";return} let users=JSON.parse(localStorage.getItem('sh_users')||'[]'); if(users.find(u=>u.email===email)){document.getElementById('authMsg').innerText="Email exists, login";return} const newUser={name,phone,email,pass}; users.push(newUser); localStorage.setItem('sh_users',JSON.stringify(users)); toast("Account created! Now login"); switchTab('login');}
+function showApp(){document.getElementById('authSection').classList.add('hidden'); document.getElementById('userInfo').innerText=currentUser.name+" • "+(isAdmin?"Admin":"Customer")+" | Logout"; document.getElementById('userInfo').onclick=logout; if(isAdmin){document.getElementById('adminView').classList.remove('hidden'); loadShoesAdmin(); loadBookings();} else{document.getElementById('customerView').classList.remove('hidden'); loadShoesCustomer();}}
 function logout(){location.reload()}
-function loadShoesCustomer(){
-  if(window.useCloud && window.db){
-    const q=window.fb.query(window.fb.collection(window.db,"shoes"), window.fb.orderBy("created","desc"));
-    window.fb.onSnapshot(q,(snap)=>{const shoes=[]; snap.forEach(d=>shoes.push({id:d.id,...d.data()})); renderShoes(shoes,"shoesGrid",false);});
-  } else {const localShoes=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); renderShoes(localShoes,"shoesGrid",false);}
-}
-function loadShoesAdmin(){
-  if(window.useCloud && window.db){
-    const q=window.fb.query(window.fb.collection(window.db,"shoes"), window.fb.orderBy("created","desc"));
-    window.fb.onSnapshot(q,(snap)=>{const shoes=[]; snap.forEach(d=>shoes.push({id:d.id,...d.data()})); shoesCache=shoes; renderShoes(shoes,"adminShoesGrid",true);});
-  } else {const localShoes=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); shoesCache=localShoes; renderShoes(localShoes,"adminShoesGrid",true);}
-}
-function renderShoes(shoes, containerId, admin){
-  const grid=document.getElementById(containerId);
-  if(!shoes.length){grid.innerHTML="<p style='color:#94a3b8'>No shoes yet. Add one!</p>";return}
-  grid.innerHTML=shoes.map(s=>`
-    <div class="card" style="padding:10px">
-      <img src="${s.image}" class="shoe-img">
-      <h4 style="margin:8px 0 4px">${s.name}</h4>
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <span style="color:#f59e0b;font-weight:800">KES ${s.price}</span>
-        <span class="badge">${s.size||''}</span>
-      </div>
-      <p style="color:#94a3b8;font-size:12px;margin:6px 0">${s.desc||''}</p>
-      ${admin?`<button class="btn" style="background:#ef4444;color:#fff;padding:8px;margin-top:6px" onclick="deleteShoe('${s.id}')">Delete</button>`:`<button class="btn" style="padding:10px;margin-top:8px" onclick="bookShoe('${s.name.replace(/'/g,"")}','${s.price}')">Book Now → WhatsApp</button>`}
-    </div>
-  `).join('');
-}
-async function addShoe(){
-  const name=document.getElementById('shoeName').value.trim();
-  const price=document.getElementById('shoePrice').value.trim();
-  const size=document.getElementById('shoeSize').value.trim();
-  const desc=document.getElementById('shoeDesc').value.trim();
-  if(!name||!price||!previewBase64){toast("Add name, price and photo");return}
-  const shoeObj={name,price,size,desc,image:previewBase64,created:Date.now()};
-  if(window.useCloud && window.db){
-    try{await window.fb.addDoc(window.fb.collection(window.db,"shoes"), shoeObj); toast("Shoe uploaded to CLOUD - all customers see it now!");}
-    catch(e){toast("Cloud error, saved locally"); saveLocal(shoeObj)}
-  } else {saveLocal(shoeObj); toast("Shoe saved! Create Firebase for all phones to see it");}
-  document.getElementById('shoeName').value="";document.getElementById('shoePrice').value="";document.getElementById('shoeSize').value="";document.getElementById('shoeDesc').value="";document.getElementById('shoeImage').value="";document.getElementById('preview').classList.add('hidden');previewBase64="";
-}
-function saveLocal(obj){
-  const arr=JSON.parse(localStorage.getItem('sh_shoes')||'[]');
-  arr.unshift({...obj,id:Date.now().toString()});
-  localStorage.setItem('sh_shoes',JSON.stringify(arr)); loadShoesAdmin();
-}
-async function deleteShoe(id){
-  if(!confirm("Delete this shoe?")) return;
-  if(window.useCloud && window.db){await window.fb.deleteDoc(window.fb.doc(window.db,"shoes",id));}
-  else {let arr=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); arr=arr.filter(s=>s.id!==id); localStorage.setItem('sh_shoes',JSON.stringify(arr)); loadShoesAdmin();}
-}
-function bookShoe(name,price){
-  const msg=`Hello SHOE HUSTLE KE, I want to book:\n*${name}* - KES ${price}\nMy name: ${currentUser.name}\nPhone: ${currentUser.phone}`;
-  const booking={shoe:name,price,customer:currentUser.name,phone:currentUser.phone,email:currentUser.email,time:Date.now()};
-  if(window.useCloud && window.db){window.fb.addDoc(window.fb.collection(window.db,"bookings"), booking).catch(()=>{});}
-  else {let b=JSON.parse(localStorage.getItem('sh_bookings')||'[]'); b.unshift(booking); localStorage.setItem('sh_bookings',JSON.stringify(b));}
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank");
-  toast("Booking sent to WhatsApp!");
-}
-function loadBookings(){
-  const el=document.getElementById('bookingsList');
-  if(window.useCloud && window.db){
-    const q=window.fb.query(window.fb.collection(window.db,"bookings"), window.fb.orderBy("time","desc"));
-    window.fb.onSnapshot(q,(snap)=>{const bookings=[]; snap.forEach(d=>bookings.push(d.data())); el.innerHTML=bookings.length?bookings.map(b=>`<div style="border-bottom:1px solid #334155;padding:8px 0;font-size:13px"><b>${b.shoe}</b> - KES ${b.price}<br>${b.customer} - ${b.phone}<br><small style="color:#94a3b8">${new Date(b.time).toLocaleString()}</small></div>`).join(''):"<p style='color:#94a3b8'>No bookings yet</p>";});
-  } else {const bookings=JSON.parse(localStorage.getItem('sh_bookings')||'[]'); el.innerHTML=bookings.length?bookings.map(b=>`<div style="border-bottom:1px solid #334155;padding:8px 0;font-size:13px"><b>${b.shoe}</b> - KES ${b.price}<br>${b.customer} - ${b.phone}</div>`).join(''):"<p style='color:#94a3b8'>No bookings yet</p>";}
-}
+function loadShoesCustomer(){const localShoes=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); renderShoes(localShoes,"shoesGrid",false);}
+function loadShoesAdmin(){const localShoes=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); renderShoes(localShoes,"adminShoesGrid",true);}
+function renderShoes(shoes, containerId, admin){const grid=document.getElementById(containerId); if(!shoes.length){grid.innerHTML="<p style='color:#94a3b8'>No shoes yet. Add one!</p>";return} grid.innerHTML=shoes.map(s=>`<div class="card" style="padding:10px"><img src="${s.image}" class="shoe-img"><h4 style="margin:8px 0 4px">${s.name}</h4><div style="display:flex;justify-content:space-between"><span style="color:#f59e0b;font-weight:800">KES ${s.price}</span><span class="badge">${s.size||''}</span></div><p style="color:#94a3b8;font-size:12px;margin:6px 0">${s.desc||''}</p>${admin?`<button class="btn" style="background:#ef4444;color:#fff;padding:8px;margin-top:6px" onclick="deleteShoe('${s.id}')">Delete</button>`:`<button class="btn" style="padding:10px;margin-top:8px" onclick="bookShoe('${s.name.replace(/'/g,"")}','${s.price}')">Book Now → WhatsApp</button>`}</div>`).join('');}
+function addShoe(){const name=document.getElementById('shoeName').value.trim(); const price=document.getElementById('shoePrice').value.trim(); const size=document.getElementById('shoeSize').value.trim(); const desc=document.getElementById('shoeDesc').value.trim(); if(!name||!price||!previewBase64){toast("Add name, price and photo");return} const shoeObj={name,price,size,desc,image:previewBase64,created:Date.now(),id:Date.now().toString()}; const arr=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); arr.unshift(shoeObj); localStorage.setItem('sh_shoes',JSON.stringify(arr)); loadShoesAdmin(); toast("Shoe saved!"); document.getElementById('shoeName').value="";document.getElementById('shoePrice').value="";document.getElementById('shoeSize').value="";document.getElementById('shoeDesc').value="";document.getElementById('shoeImage').value="";document.getElementById('preview').classList.add('hidden');previewBase64="";}
+function deleteShoe(id){if(!confirm("Delete?")) return; let arr=JSON.parse(localStorage.getItem('sh_shoes')||'[]'); arr=arr.filter(s=>s.id!==id); localStorage.setItem('sh_shoes',JSON.stringify(arr)); loadShoesAdmin();}
+function bookShoe(name,price){const msg=`Hello SHOE HUSTLE KE, I want to book:\n*${name}* - KES ${price}\nMy name: ${currentUser.name}\nPhone: ${currentUser.phone}`; const booking={shoe:name,price,customer:currentUser.name,phone:currentUser.phone,email:currentUser.email,time:Date.now()}; let b=JSON.parse(localStorage.getItem('sh_bookings')||'[]'); b.unshift(booking); localStorage.setItem('sh_bookings',JSON.stringify(b)); window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank"); toast("Booking sent!");}
+function loadBookings(){const el=document.getElementById('bookingsList'); const bookings=JSON.parse(localStorage.getItem('sh_bookings')||'[]'); el.innerHTML=bookings.length?bookings.map(b=>`<div style="border-bottom:1px solid #334155;padding:8px 0;font-size:13px"><b>${b.shoe}</b> - KES ${b.price}<br>${b.customer} - ${b.phone}</div>`).join(''):"No bookings";}
 </script>
 </body>
 </html>
